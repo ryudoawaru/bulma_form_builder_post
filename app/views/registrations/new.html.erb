@@ -1,5 +1,5 @@
 <%=form_with scope: :user, url: {action: :create}, local: true, builder: BulmaFormBuilder, class: "form-horizontal" do |f|%>
-  <%=f.bulma_email_field :email%>
+  <%=f.bulma_email_field :email, help: "請勿用 + ", label: "電子郵件"%>
   <%=f.bulma_password_field :passwd%>
   <%=f.bulma_password_field :passwd_confirmation%>
   <%=f.submit 'Sign Up', class: "button is-primary"%>

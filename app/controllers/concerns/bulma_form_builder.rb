@@ -12,18 +12,26 @@ class BulmaFormBuilder < ::ActionView::Helpers::FormBuilder
     end
   end
 
+  def fetch_i18n_help_text(method)
+    t_scope = ["helpers", "help", @object_name, method].join(".")
+    I18n.t(t_scope, default: nil)
+  end
+
   def self.bulma_field(field_method_name)
     define_method "bulma_#{field_method_name}" do |method, options = {}|
-      options[:class] = options.delete(:class).to_s + " input "
+    options[:class] = [options.delete(:class), "input"].compact.join(" ")
+      help_text = options.delete(:help) || fetch_i18n_help_text(method)
+      help_tag = help_text ? @template.content_tag(:p, help_text, class: "help") : ""
       field_container do
-        label(method, class: "label") + control_container do
-          send(field_method_name, method, options)
+        label(method, options.delete(:label), class: "label") + control_container do
+          send(field_method_name, method, options) + help_tag
         end
       end
     end
   end
 
-  bulma_field(:email_field)
-  bulma_field(:password_field)
+  %i[color_field date_field email_field password_field text_field datetime_field datetime_local_field number_field phone_field range_field].each do |field_name|
+    bulma_field field_name
+  end
 
 end
