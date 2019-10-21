@@ -1,0 +1,21 @@
+<%=form_with scope: :user, url: {action: :create}, local: true, builder: BulmaFormBuilder, class: "form-horizontal" do |f|%>
+  <%=f.field_container do%>
+    <%=f.label :email, class: "label"%>
+    <%=f.control_container do%>
+      <%=f.email_field :email, class: "input"%>
+    <%end%>
+  <%end%>
+  <%=f.field_container do%>
+    <%=f.label :passwd, class: "label"%>
+    <%=f.control_container do%>
+      <%=f.password_field :passwd, class: "input"%>
+    <%end%>
+  <%end%>
+  <%=f.field_container do%>
+    <%=f.label :passwd_confirmation, class: "label"%>
+    <%=f.control_container do%>
+      <%=f.password_field :passwd_confirmation, class: "input"%>
+    <%end%>
+  <%end%>
+  <%=f.submit 'Sign Up', class: "button is-primary"%>
+<%end%>

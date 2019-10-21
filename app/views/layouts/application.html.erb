@@ -4,12 +4,30 @@
     <title>BulmaForm</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
+    <%= stylesheet_pack_tag 'application' %>
   </head>
 
   <body>
-    <%= yield %>
+    <section class="hero is-fullheight">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <div class="columns is-8 is-variable ">
+            <div class="column is-two-thirds has-text-left">
+              <h1 class="title is-1">註冊表單</h1>
+              <p class="is-size-4">
+              嗨我是註冊表單
+              </p>
+            </div>
+            <div class="column is-one-third has-text-left">
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
