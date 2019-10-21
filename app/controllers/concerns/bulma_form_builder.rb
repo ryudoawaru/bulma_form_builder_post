@@ -11,4 +11,19 @@ class BulmaFormBuilder < ::ActionView::Helpers::FormBuilder
       container_tag(klass, content_or_options = nil, options = {}, &block)
     end
   end
+
+  def self.bulma_field(field_method_name)
+    define_method "bulma_#{field_method_name}" do |method, options = {}|
+      options[:class] = options.delete(:class).to_s + " input "
+      field_container do
+        label(method, class: "label") + control_container do
+          send(field_method_name, method, options)
+        end
+      end
+    end
+  end
+
+  bulma_field(:email_field)
+  bulma_field(:password_field)
+
 end
