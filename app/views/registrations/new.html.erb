@@ -1,9 +1,9 @@
 <%=form_with scope: :user, url: {action: :create}, local: true, builder: BulmaFormBuilder, class: "form-horizontal" do |f|%>
-  <%=f.bulma_email_field :email, help: "請勿用 + ", label: "電子郵件"%>
-  <%=f.bulma_select :age_range, %w[20歲以下 21~30歲 31~40歲 41歲以上]%>
-  <%=f.bulma_collection_radio_buttons :sex, %w[男 女 其它], :to_s, :to_s, label: '性別'%>
-  <%=f.bulma_collection_check_boxes :from, [%w[SNS sns], %w[朋友告知 friend], %w[平面媒體 media], %w[其它 others]], ->(x){x[1]}, :first, label: '從何處得知我們'%>
-  <%=f.bulma_password_field :passwd%>
-  <%=f.bulma_password_field :passwd_confirmation%>
+  <%=f.email_field :email, help: "請勿用 + ", label: "電子郵件"%>
+  <%=f.select :age_range, %w[20歲以下 21~30歲 31~40歲 41歲以上]%>
+  <%=f.collection_radio_buttons :sex, %w[男 女 其它], :to_s, :to_s, label: '性別'%>
+  <%=f.collection_check_boxes :from, [%w[SNS sns], %w[朋友告知 friend], %w[平面媒體 media], %w[其它 others]], ->(x){x[1]}, :first, label: '從何處得知我們'%>
+  <%=f.password_field :passwd%>
+  <%=f.password_field :passwd_confirmation%>
   <%=f.submit 'Sign Up', class: "button is-primary"%>
 <%end%>
